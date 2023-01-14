@@ -30,15 +30,15 @@ const Form = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(update(_id, name, username))
+        navigate('/home')
         Swal.fire({
           title:'Edit Ok!',
           text: 'Your file has been edit.',
           icon: 'success',
           showClass: {
-            popup: 'animate__animated animate__slideOutUp'
+            popup: 'animate__animated animate__slideInRight'
           }
       })
-        navigate('/home')
       } else {
          Swal.fire({
           title: 'Edit Cancel!',
