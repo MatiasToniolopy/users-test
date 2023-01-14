@@ -19,7 +19,10 @@ const CreateUser = () => {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Please complete all fields!'
+        text: 'Please complete all fields!',
+        showClass: {
+          popup: 'animate__animated animate__fadeInLeft'
+        }
   })
     } else {
       Swal.fire({
@@ -29,15 +32,21 @@ const CreateUser = () => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Add user!'
+        confirmButtonText: 'Yes, Add user!',
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        }
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch(create(name, username, email))
-            Swal.fire(
-             'User add!',
-             'Your user has been added successfully',
-             'success'
-           )
+            Swal.fire({
+             title: 'User add!',
+             text: 'Your user has been added successfully',
+             icon: 'success',
+             showClass: {
+              popup: 'animate__animated animate__zoomInDown'
+            }
+          })
           navigate('/home')
         }
       })

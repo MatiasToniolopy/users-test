@@ -23,15 +23,21 @@ const UserDetail = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete user!'
+      confirmButtonText: 'Yes, delete user!',
+      showClass: {
+        popup: 'animate__animated animate__slideInRight'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteUser(_id))
-          Swal.fire(
-           'User deleted!',
-           'Your user has been successfully deleted',
-           'success'
-         )
+          Swal.fire({
+           title: 'User deleted!',
+           text: 'Your user has been successfully deleted',
+           icon: 'success',
+           showClass: {
+            popup: 'animate__animated animate__wobble'
+          }
+          })
         navigate('/home')
       }
     })

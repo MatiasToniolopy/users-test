@@ -23,22 +23,31 @@ const Form = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, edit user!'
+      confirmButtonText: 'Yes, edit user!',
+      showClass: {
+        popup: 'animate__animated animate__zoomInDown'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(update(_id, name, username))
-        Swal.fire(
-          'Edit Ok!',
-          'Your file has been edit.',
-          'success'
-        )
+        Swal.fire({
+          title:'Edit Ok!',
+          text: 'Your file has been edit.',
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__slideOutUp'
+          }
+      })
         navigate('/home')
       } else {
-         Swal.fire(
-          'Edit Cancel!',
-          'Your file not edit.',
-          'error'
-        )
+         Swal.fire({
+          title: 'Edit Cancel!',
+          text: 'Your file not edit.',
+          icon: 'error',
+          showClass: {
+            popup: 'animate__animated animate__slideInLeft'
+          }
+         })
       }
     })
   }

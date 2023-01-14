@@ -1,25 +1,31 @@
 import React from 'react'
 import logo from '../images/lan2.jpeg'
-import { FcHome } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import {useNavigate} from 'react-router-dom'
 
 import Swal from 'sweetalert2'
+import 'animate.css';
+
+import {signInWithGoogle} from '../firebase.config'
+
 
 const Landing = () => {
   const navigate = useNavigate()
 
   const handleClick = async () => {
+    await signInWithGoogle()
+    navigate('/home')
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You can come back later!",
-      icon: 'warning',
-      showCancelButton: true,
+      title: `Welcome`,
+      text: "It's good to have you here!",
+      icon: 'success',
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, go it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate('/home')
+      confirmButtonText: 'Ok',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
       }
     })
   }
@@ -33,8 +39,8 @@ const Landing = () => {
           onClick={handleClick}
             className="flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-cardOverlay cursor-pointer hover:bg-card hover:shadow-md duration-100 ease-in-out transition-all"
           >
-            <FcHome className="text-2xl" />
-            <p>Go to Home</p>
+            <FcGoogle className="text-2xl" />
+            <p>Login with Google</p>
           </div>
         </div>
       </div>
